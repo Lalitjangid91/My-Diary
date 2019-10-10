@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        background-color: powderblue;
+      }
+      .lalit{
+        margin: auto;
+        width: 60%;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #ffaacc;
+      }
+      .lalit textarea{
+        background-color: #c0c0c9;
+        padding: 10px;
+        width: 95%;
+        margin: 10px;
+        border-radius: 10px;
+        color: #330019;
+        font-size: 30px;
+      }
+      .lalit label{
+        text-align: center;
+        font-size: 30px;
+        color: inherit;
+        margin: 10px;
+      }
+      input[type=submit]{
+        background-color: #c0c0c9;
+        padding: 10px;
+        width: 98%;
+        margin: 10px;
+        border-radius: 10px;
+        color: #330019;
+        font-size: 30px;
+      }
+      input[type=submit]:hover{
+        background-color: #330019;
+        color: #c0c0c9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lalit">
+      <form action="{% url 'lalit' %}" method="post">
+        {% csrf_token %}
+        <label for="">Enter Your Text</label><br>
+        {{form.Text}}
+        <input type="submit" name="Submit" value="Submit">
+      </form>
+    </div>
+
+  </body>
+</html>

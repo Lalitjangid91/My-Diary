@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load lalit %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <style media="screen">
+    .lalit1
+    {
+      background-color: teal;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+    }
+    .lalit1 a{
+      text-decoration: none;
+      font-size: 35px;
+    }
+    .lalit1 a:hover{
+      color: #f5f5dc;
+    }
+    .lalit1 h1{
+      text-align: center;
+    }
+    .lalit2{
+      background-color: powderblue;
+      padding: 10px;
+      margin: 20px;
+      border-radius: 10px;
+      width: 94%;
+      float:left;
+    }
+    .lalit3{
+      float: left;
+    }
+
+    .lalit3 a{
+      text-decoration: none;
+      color: #7f00ff;
+      margin-left:10px;
+      font-size: 20px;
+    }
+    .lalit3 a:hover{
+      font-size: 25px;
+    }
+    #l2{
+      color: #666600;
+      margin-left:10px;
+      font-size: 20px;
+    }
+    .lalit4{
+      float: right;
+      margin-top: 50px;
+      margin-right: 40px;
+    }
+    input[type=submit]{
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: royalblue;
+    }
+    input[type=submit]:hover{
+      cursor: pointer;
+    }
+    #X{
+      float: right;
+    }
+    </style>
+
+  </head>
+  <body>
+    <div class="lalit1">
+
+        <h1>My Diary</h1>
+        <a href="{% url 'lalit' %}">Add Entry</a>
+        <a id='X' href="{% url 'deleteall' %}">Delete All</a>
+    </div>
+
+      {% for var in list_data %}
+      <div class="lalit2">
+        <form action="delete/" method="post">
+          {% csrf_token %}
+          <div class="lalit3">
+            <a href="{% url 'update' date=var.Date %}">{{var.Date}}</a>
+            <pre><h3 id='l2'>{{var.Text}}</h3></pre>
+          </div>
+          <div class="lalit4">
+            <input type="submit" name={{var.Date|Str}} value="DELETE">
+          </div>
+        </form>
+      </div>
+      {% endfor %}
+  </body>
+</html>
